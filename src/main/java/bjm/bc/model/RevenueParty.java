@@ -35,8 +35,12 @@ public class RevenueParty {
     @Column(name = "REVENUE_TYPE")
     @Enumerated(EnumType.STRING)
     private RevenueType revenueType;
+    
+    
     @Transient
-    private String passwordConfirm;
+	private String memorableDateStr;
+	@Transient
+	private String passwordConfirm;
 	public long getId() {
 		return id;
 	}
@@ -96,6 +100,12 @@ public class RevenueParty {
 	}
 	public void setPasswordConfirm(String passwordConfirm) {
 		this.passwordConfirm = passwordConfirm;
+	}
+	public String getMemorableDateStr() {
+		return memorableDateStr;
+	}
+	public void setMemorableDateStr(String memorableDateStr) {
+		this.memorableDateStr = memorableDateStr;
 	}
 	
 	
