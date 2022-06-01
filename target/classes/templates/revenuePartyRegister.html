@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Revenue Party Registration</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Revenue Party Registration</h1>
+    <form action="#" th:action="@{/revenuePartyRegister}" th:object="${revenueParty}" method="post">
+    	<p>Name: <input type="text" th:field="*{name}" /></p>
+        <p>Email: <input type="text" th:field="*{email}" /></p>
+        <p>Owner Adhaar Card Number: <input type="text" th:field="*{ownerAdhaarNumber}" /></p>
+        <p>Revenue Type:
+        <select id="revenueType" th:field="*{revenueType}">
+                                <option th:each="type : ${T(bjm.bc.model.RevenueType}"
+                                        th:value="${type.value}" th:text="${type.label}"></option>
+        </select>
+        </p> 
+        <p>Password: <input type="password" th:field="*{password}" /></p>
+        <p>Confirm Password: <input type="password" th:field="*{passwordConfirm}" /></p>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
