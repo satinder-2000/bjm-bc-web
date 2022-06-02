@@ -7,40 +7,40 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import javax.persistence.GenerationType;
 
 @Entity(name = "REVENUE_PARTY")
 public class RevenueParty {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private long id;
-    @Column(name = "NAME")
-    private String name;
-    @Column(name = "MEMORABLE_DATE")
-    private LocalDate memorableDate;
-    @Column(name = "ORGANISATION")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private long id;
+	@Column(name = "NAME")
+	private String name;
+	@Column(name = "EMAIL")
+	private String email;
+	@Column(name = "ORGANISATION")
     private String organisation;
-    @Column(name = "OWNER_ADHAAR_NUMBER")
+	@Column(name = "OWNER_ADHAAR_NUMBER")
     private String ownerAdhaarNumber;
-    @Column(name = "ACCOUNT_HASH")
-    private String accountHash;
-    @Column(name = "EMAIL")
-    private String email;
-    @Column(name = "PASSWORD")
+	@Column(name = "MEMORABLE_DATE")
+    private LocalDate memorableDate;
+	@Column(name = "ACCOUNT_HASH")
+	private String accountHash;
+	@Column(name = "REVENUE_TYPE")
+	@Enumerated(EnumType.STRING)
+	private RevenueType revenueType;
+	@Column(name = "PASSWORD")
     private String password;
-    @Column(name = "REVENUE_TYPE")
-    @Enumerated(EnumType.STRING)
-    private RevenueType revenueType;
-    
-    
-    @Transient
+	
+	@Transient
 	private String memorableDateStr;
 	@Transient
 	private String passwordConfirm;
+	
 	public long getId() {
 		return id;
 	}
@@ -53,12 +53,13 @@ public class RevenueParty {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public LocalDate getMemorableDate() {
-		return memorableDate;
+	public String getEmail() {
+		return email;
 	}
-	public void setMemorableDate(LocalDate memorableDate) {
-		this.memorableDate = memorableDate;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+	
 	public String getOrganisation() {
 		return organisation;
 	}
@@ -71,23 +72,17 @@ public class RevenueParty {
 	public void setOwnerAdhaarNumber(String ownerAdhaarNumber) {
 		this.ownerAdhaarNumber = ownerAdhaarNumber;
 	}
-	public String getAccountHash() {
-		return accountHash;
-	}
-	public void setAccountHash(String accountHash) {
-		this.accountHash = accountHash;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getAccountHash() {
+		return accountHash;
+	}
+	public void setAccountHash(String accountHash) {
+		this.accountHash = accountHash;
 	}
 	public RevenueType getRevenueType() {
 		return revenueType;
@@ -95,11 +90,11 @@ public class RevenueParty {
 	public void setRevenueType(RevenueType revenueType) {
 		this.revenueType = revenueType;
 	}
-	public String getPasswordConfirm() {
-		return passwordConfirm;
+	public LocalDate getMemorableDate() {
+		return memorableDate;
 	}
-	public void setPasswordConfirm(String passwordConfirm) {
-		this.passwordConfirm = passwordConfirm;
+	public void setMemorableDate(LocalDate memorableDate) {
+		this.memorableDate = memorableDate;
 	}
 	public String getMemorableDateStr() {
 		return memorableDateStr;
@@ -107,7 +102,15 @@ public class RevenueParty {
 	public void setMemorableDateStr(String memorableDateStr) {
 		this.memorableDateStr = memorableDateStr;
 	}
+	public String getPasswordConfirm() {
+		return passwordConfirm;
+	}
+	public void setPasswordConfirm(String passwordConfirm) {
+		this.passwordConfirm = passwordConfirm;
+	}
 	
 	
-
+	
+	
+	
 }

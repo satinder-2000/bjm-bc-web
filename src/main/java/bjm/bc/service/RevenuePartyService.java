@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import bjm.bc.model.RevenueParty;
 import bjm.bc.repository.RevenuePartyRepository;
 import bjm.bc.util.HashGenerator;
+import bjm.bc.util.PasswordUtil;
 
 @Service
 public class RevenuePartyService {
@@ -23,6 +24,8 @@ public class RevenuePartyService {
 		revenueParty.setAccountHash(accountHash);
 		LocalDate ld = LocalDate.parse(revenueParty.getMemorableDateStr(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		revenueParty.setMemorableDate(ld);
+		String securePassword = PasswordUtil.generateSecurePassword(revenueParty.getPassword(), revenueParty.getEmail());
+		revenueParty.setPassword(securePassword);
 		revenueParty = revenuePartyRepository.save(revenueParty);
 		LOGGER.info("Revenue Party created with ID: "+revenueParty.getId());
 		return revenueParty;
@@ -42,6 +45,8 @@ public class RevenuePartyService {
 		revenueParty.setAccountHash(accountHash);
 		LocalDate ld = LocalDate.parse(revenueParty.getMemorableDateStr(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		revenueParty.setMemorableDate(ld);
+		String securePassword = PasswordUtil.generateSecurePassword(revenueParty.getPassword(), revenueParty.getEmail());
+		revenueParty.setPassword(securePassword);
 		revenueParty = revenuePartyRepository.save(revenueParty);
 		LOGGER.info("Revenue Party updated with ID: "+revenueParty.getId());
 		return revenueParty;
